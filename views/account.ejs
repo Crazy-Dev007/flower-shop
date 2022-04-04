@@ -1,0 +1,77 @@
+<div class="section bg-info ">
+    <div class="container-fluid ">
+
+        <div class="row d-flex flex-column align-items-center">
+            <div class="col-6">
+                <h1>Login Page</h1>
+            </div>
+        </div>
+        <div class="row d-flex flex-column align-items-center">
+            <div class="col-6">
+
+                <form action="/user/login" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter Your Username"
+                            name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Password" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="passwprd" placeholder="Enter Your Password"
+                            name="password">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-dark">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Register Section -->
+<div class="section bg-dark text-light">
+    <div class="container-fluid ">
+        <div class="row text-center">
+            <div class="col">
+                <h1>Register Page</h1>
+            </div>
+        </div>
+        <div class="row d-flex flex-column align-items-center">
+            <div class="col-6">
+                <form action="/user/register" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" placeholder="Enter Your Age" name="age">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="Address" placeholder="Enter Your Address"
+                            name="address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username / Email</label>
+                        <input type="email" class="form-control" id="username" placeholder="Enter Your Username"
+                            name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Password" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="passwprd" placeholder="Enter Your Password"
+                            name="password">
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-warning">Register</button>
+                        <a href="/" class="btn btn-primary">Back to home</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
