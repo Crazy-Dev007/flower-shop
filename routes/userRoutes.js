@@ -1,6 +1,8 @@
 const express = require("express");
 const userController = require("../controller/userController");
 const router = express.Router();
+const passport = require("passport");
+const { isAuth, isAdmin } = require("../config/passportConfig");
 
 // @decs    Login and Register Page
 // @route   GET /user/account
@@ -8,7 +10,14 @@ router.get("/account", userController.account);
 
 // @decs    get data from Login Page
 // @route   POST /user/login
-router.post("/login", userController.loginpost);
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    failureMessage: "invalid Login Check Username And Password",
+    failureRedirect: "/user/account",
+    successRedirect: "/product/orderpage",
+  })
+);
 
 // @decs    get data from register Page
 // @route   POST /user/register
@@ -17,7 +26,7 @@ router.post("/register", userController.registerpost);
 // @decs    Dashboard Page for Admin Only
 // @route   GET /user/Dashboard
 // @Auth    isAdmin
-router.get("/dashboard", userController.dashboard);
+router.get("/dashboard", isAuth, isAdmin, userController.dashboard);
 
 // @decs    logout endpoint redirect to login page
 // @route   GET /user/logout

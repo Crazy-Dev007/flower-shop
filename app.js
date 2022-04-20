@@ -1,15 +1,21 @@
 require("dotenv").config();
 const express = require("express");
+const expressSession = require("express-session");
 const morgan = require("morgan");
 const path = require("path");
 const { connectdb } = require("./models/user");
 const expressLayouts = require("express-ejs-layouts");
+const { initpassport } = require("./config/passportConfig");
+const passport = require("passport");
 const app = express();
 
 const port = process.env.PORT || 3000;
 
 // function calling
 connectdb();
+
+//passport config
+initpassport(passport);
 
 // static files
 app.use("/user", express.static(path.join(process.cwd(), "public")));
@@ -35,6 +41,16 @@ app.set("layout", "layouts/layout");
 
 // logger
 app.use(morgan("tiny"));
+
+app.use(
+  expressSession({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // route
 app.use("/user", require("./routes/userRoutes")); // User Endpoints

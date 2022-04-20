@@ -5,10 +5,6 @@ const account = (req, res) => {
   res.render("account");
 };
 
-const loginpost = (req, res) => {
-  res.redirect("/dashboard");
-};
-
 // TO-DO joi Validation require
 const registerpost = async (req, res) => {
   const user = await User.findOne({ username: req.body.username });
@@ -32,7 +28,6 @@ const logout = (req, res) => {
 };
 
 module.exports = {
-  loginpost,
   account,
   registerpost,
   logout,

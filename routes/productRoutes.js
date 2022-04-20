@@ -22,4 +22,9 @@ router.get("/getproduct", getdoc);
 router.get("/getproduct/:id", getdocid);
 router.get("/delproduct/:id", deldocid);
 
+router.get("/orderpage", (req, res) => {
+  console.log(req.user);
+  res.render("orderpage");
+});
+
 module.exports = router;
