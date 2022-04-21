@@ -1,5 +1,6 @@
 const { User } = require("../models/user");
 const product = require("../models/product");
+const { redirect } = require("express/lib/response");
 
 const account = (req, res) => {
   res.render("account");
@@ -24,7 +25,10 @@ const dashboard = (req, res) => {
 
 const logout = (req, res) => {
   // check current logged user and logout
-  res.send("logout Page");
+  console.log(`${req.user.name} is logged out`);
+  logout();
+
+  redirect("/");
 };
 
 module.exports = {

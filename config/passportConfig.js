@@ -29,15 +29,16 @@ exports.initpassport = (passport) => {
 // middware
 exports.isAuth = (req, res, next) => {
   if (req.user) {
+    console.log(`Current User ----> ${req.user.role}`);
     return next();
   }
   res.redirect("/user/account");
 };
 
 exports.isAdmin = (req, res, next) => {
-  if (req.user.role == "Admin") {
-    return next();
+  if (req.user.role == "admin") {
+    res.redirect("/user/dashboard");
   }
-  console.log("Admin permission");
-  res.redirect("/user/account");
+  next();
+  // console.log(`Current User ---> ${req.user.role}`);
 };

@@ -1,19 +1,6 @@
 <div class="section bg-dark ">
     <div class="container">
         <div class="row">
-            <!-- <div class="col-6">
-                <img src="data:image/<%=item.img.contentType%>;base64,<%= item.img.data.toString('base64') %>"
-                    alt="product Image" class="img-thumbnail" width="500" height="500">
-            </div>
-            <div class="col-6 d-flex flex-column justify-content-between">
-                <h1> <%= item.name %> </h1>
-                <hr class="dividder">
-                <h3> Description : <%= item.desc %> </h3>
-                <h3> Qty : <%= item.qty %> Rs </h3>
-                <h2> Price : <%= item.price %> </h2>
-                <a href="" class="btn btn-primary"> Buy Now </a>
-            </div> -->
-
             <div class="card ">
                 <div class="row">
                     <div class="col-6 border p-3">
@@ -35,7 +22,7 @@
                                 </div>
                             </div>
 
-                            <a href="" class="btn btn-primary">Buy Now</a>
+                            <a href="/product/orderpage/<%= item.id %>" class="btn btn-primary">Buy Now</a>
 
                         </div>
                     </div>

@@ -102,6 +102,24 @@ const deldocid = async (req, res) => {
   }
 };
 
+const orderpage = async (req, res) => {
+  console.log(req.user);
+  try {
+    const product = await productmodel.findById(req.params.id);
+
+    // const data = {
+    //   useraddr: req.user.address,
+    //   Qty:
+    //   price: product.price,
+    // };
+
+    res.render("orderpage", { product });
+  } catch (error) {
+    console.log(`Error in Order ${error}`);
+    res.status(404).redirect("/product/getproduct");
+  }
+};
+
 module.exports = {
   createdoc,
   getdoc,
@@ -110,4 +128,5 @@ module.exports = {
   editdoc,
   updatedoc,
   storage,
+  orderpage,
 };

@@ -1,24 +1,61 @@
-<div class="section">
+<div class="section bg-dark">
     <div class="container">
-        <h1>Order Details</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>1</th>
-                    <th>Address</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem, explicabo.</td>
-                    <td>100 rs</td>
-                    <td>10 pices</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col">
+                <div class="card ">
+                    <div class="card-body d-flex">
+                        <div class="row">
+                            <div class="col">
+                                <img class="card-img-top"
+                                    src="data:image/<%=product.img.contentType%>;base64,<%= product.img.data.toString('base64') %>"
+                                    alt="product image" height="400" width="200">
+                            </div>
+                            <div class="col d-flex justify-content-between flex-column">
+                                <div class="card-header">
+                                    <h1 class="card-title"><%= product.name %></h1>
+                                </div>
+                                <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+                                <form action="/product/orderpage" method="post">
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <div class="form-group">
+                                                <label for="qty">Qty</label>
+                                                <input type="text" class="form-control" id="qty" aria-describedby="qty"
+                                                    placeholder="Enter qty" value="1">
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="form-group">
+                                                <label for="price">Price</label>
+                                                <input type="text" class="form-control" id="price"
+                                                    aria-describedby="price" placeholder="Enter price"
+                                                    value="<%= product.price %>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="address">Address</label>
+                                        </div>
+                                        <div class="col">
+                                            <textarea name="address" id="address" cols="30" rows="4">  </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <button class="btn btn-warning" type="submit"> Place Order</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+</div>
 
 </div>

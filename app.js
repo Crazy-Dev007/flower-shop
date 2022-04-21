@@ -4,6 +4,7 @@ const expressSession = require("express-session");
 const morgan = require("morgan");
 const path = require("path");
 const { connectdb } = require("./models/user");
+const createAdmin = require("./seeder/admin");
 const expressLayouts = require("express-ejs-layouts");
 const { initpassport } = require("./config/passportConfig");
 const passport = require("passport");
@@ -17,6 +18,9 @@ connectdb();
 //passport config
 initpassport(passport);
 
+// create Admin User For Project
+createAdmin();
+
 // static files
 app.use("/user", express.static(path.join(process.cwd(), "public")));
 app.use("/product", express.static(path.join(process.cwd(), "public")));
@@ -26,6 +30,10 @@ app.use(
 );
 app.use(
   "/product/editproduct",
+  express.static(path.join(process.cwd(), "public"))
+);
+app.use(
+  "/product/orderpage",
   express.static(path.join(process.cwd(), "public"))
 );
 app.use("/", express.static(path.join(process.cwd(), "public")));

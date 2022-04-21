@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const { isAuth } = require("../config/passportConfig");
 const {
   createdoc,
   storage,
@@ -9,6 +10,7 @@ const {
   deldocid,
   editdoc,
   updatedoc,
+  orderpage,
 } = require("../controller/productController");
 
 const upload = multer({ storage: storage });
@@ -22,9 +24,6 @@ router.get("/getproduct", getdoc);
 router.get("/getproduct/:id", getdocid);
 router.get("/delproduct/:id", deldocid);
 
-router.get("/orderpage", (req, res) => {
-  console.log(req.user);
-  res.render("orderpage");
-});
+router.get("/orderpage/:id", isAuth, orderpage);
 
 module.exports = router;
