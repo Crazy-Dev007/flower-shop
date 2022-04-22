@@ -11,6 +11,7 @@ const {
   editdoc,
   updatedoc,
   orderpage,
+  orderpagepost,
 } = require("../controller/productController");
 
 const upload = multer({ storage: storage });
@@ -25,5 +26,7 @@ router.get("/getproduct/:id", getdocid);
 router.get("/delproduct/:id", deldocid);
 
 router.get("/orderpage/:id", isAuth, orderpage);
+
+router.post("/orderpage", isAuth, orderpagepost);
 
 module.exports = router;

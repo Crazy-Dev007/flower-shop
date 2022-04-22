@@ -1,4 +1,5 @@
 const productmodel = require("../models/product");
+const ordermodel = require("../models/order");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
@@ -102,18 +103,39 @@ const deldocid = async (req, res) => {
   }
 };
 
+// GET
 const orderpage = async (req, res) => {
   console.log(req.user);
   try {
     const product = await productmodel.findById(req.params.id);
-
-    // const data = {
-    //   useraddr: req.user.address,
-    //   Qty:
-    //   price: product.price,
-    // };
-
     res.render("orderpage", { product });
+  } catch (error) {
+    console.log(`Error in Order ${error}`);
+    res.status(404).redirect("/product/getproduct");
+  }
+};
+
+const orderpagepost = async (req, res) => {
+  console.log(req.user);
+  try {
+    const product = await productmodel.findById(req.params.id);
+    const { qty, price, address } = req.body;
+    const data = {
+      userid: req.user._id,
+      price: price,
+      qty: qty,
+      address: address,
+    };
+
+    ordermodel.create(data, (err, item) => {
+      if (err) {
+        console.log(err);
+      } else {
+        item.save();
+      }
+    });
+
+    res.redirect("/product/getproduct");
   } catch (error) {
     console.log(`Error in Order ${error}`);
     res.status(404).redirect("/product/getproduct");
@@ -129,4 +151,5 @@ module.exports = {
   updatedoc,
   storage,
   orderpage,
+  orderpagepost,
 };

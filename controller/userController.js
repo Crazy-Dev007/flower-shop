@@ -1,5 +1,6 @@
 const { User } = require("../models/user");
 const product = require("../models/product");
+const ordermodel = require("../models/order");
 const { redirect } = require("express/lib/response");
 
 const account = (req, res) => {
@@ -26,14 +27,25 @@ const dashboard = (req, res) => {
 const logout = (req, res) => {
   // check current logged user and logout
   console.log(`${req.user.name} is logged out`);
-  logout();
+  req.logOut;
 
-  redirect("/");
+  res.redirect("/");
+};
+
+const profile = async (req, res) => {
+  try {
+    const orders = await ordermodel.find();
+    console.log(orders);
+    res.render("profile", { data: req.user, orders });
+  } catch (error) {
+    res.send(error);
+  }
 };
 
 module.exports = {
   account,
   registerpost,
   logout,
+  profile,
   dashboard,
 };

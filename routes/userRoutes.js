@@ -39,4 +39,7 @@ router.get("/dashboard", isAuth, userController.dashboard);
 // @route   GET /user/logout
 router.get("/logout", userController.logout);
 
+// @decs    To user Profile
+// @route   GET /user/profile
+router.get("/profile", isAuth, userController.profile);
 module.exports = router;
